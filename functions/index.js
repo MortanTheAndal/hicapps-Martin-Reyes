@@ -36,10 +36,10 @@ exports.pacientes = functions.https.onRequest((request, response)=>{
       //Caso busqueda de paciente por UUID
       if(pathSplt[1]){
         patientsReference.child(pathSplt[1]).on('value', (snapshot) => {
-          if(snapshot.val().Accesible){
+          if(snapshot.val().accesible){
             response.json(snapshot.val());
           }
-          else if(!snapshot.val().Accesible){
+          else if(!snapshot.val().accesible){
             response.status(403).send();
           }
         });
