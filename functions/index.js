@@ -1,15 +1,6 @@
 const functions = require("firebase-functions");
 const admin = require("firebase-admin");
 
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
-
 const serviceAccount = require(".\/nicoavila-allpurpose-firebase-adminsdk-tbnud-5af8fc8f2e.json");
 
 
@@ -33,26 +24,26 @@ exports.pacientes = functions.https.onRequest((request, response)=>{
       const pathSplt = pth.split("/");
       console.log(pathSplt[1]);
       
-      //Caso busqueda de paciente por UUID
+      // caso busqueda de paciente por UUID
       if(pathSplt[1]){
         patientsReference.child(pathSplt[1]).on('value', (snapshot) => {
           if(snapshot.val().accesible){
             response.json(snapshot.val());
           }
+
           else if(!snapshot.val().accesible){
             response.status(403).send();
           }
         });
       }
+      
+      // get todos los pacientes
       else {
         patientsReference.on('value', (snapshot)=>{
           response.json(snapshot.val());
         });
       }
       break;
-      //caso busqueda. path = /pacientes/{UUID}
-      //return response.send(pathSplt.length+"  "+pathSplt);
-      
 
     case 'POST':
       patientsReference.push(request.body);
@@ -60,10 +51,4 @@ exports.pacientes = functions.https.onRequest((request, response)=>{
       response.send("paciente creado: "+request.body.nombre+" "+request.body.ApellidoPaterno);
       break;
   }
-
-  
-  
-  
-  
-  
 });
