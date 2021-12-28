@@ -1,0 +1,8 @@
+{
+  "rules": {
+    "publications": {
+        ".read": true,
+        ".write": true
+    }
+  }
+}

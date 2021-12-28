@@ -1,0 +1,47 @@
+POST http://localhost:5001/nicoavila-allpurpose/us-central1/pacientes
+Content-Type: application/json
+
+{
+    "nombre":"vicente",
+    "ApellidoPaterno":"oyanedel",
+    "ApelliloMaterno":"muñoz",
+    "SSN":"12345678",
+    "Accesible": true
+
+}
+
+###
+POST http://localhost:5001/nicoavila-allpurpose/us-central1/pacientes
+Content-Type: application/json
+
+{
+    "nombre":"matias",
+    "ApellidoPaterno":"zamora",
+    "ApelliloMaterno":"galleguillo",
+    "SSN":"12345678",
+    "Accesible": true
+}
+
+###
+POST http://localhost:5001/nicoavila-allpurpose/us-central1/pacientes
+Content-Type: application/json
+
+{
+    "nombre":"martin",
+    "ApellidoPaterno":"reyes",
+    "ApelliloMaterno":"fernandez",
+    "SSN":"12345678",
+    "Accesible": false
+
+}
+
+### get accesible
+GET  http://localhost:5001/nicoavila-allpurpose/us-central1/pacientes/-Ms2BM-TCD9NULItgoWz
+
+### get not accesible
+GET  http://localhost:5001/nicoavila-allpurpose/us-central1/pacientes/-Ms2BV8rpxjN1A8opEa_
+
+
+
+###
+GET  http://localhost:5001/nicoavila-allpurpose/us-central1/pacientes
